@@ -3,6 +3,7 @@ import DB from './db'
 import _ from 'lodash'
 import path from 'path'
 import fs from 'fs'
+var winston = require('winston');
 
 // TODO: Cleanup old sessions
 // TODO: If messages count > X, delete some
@@ -63,7 +64,6 @@ module.exports = {
   },
 
   init: async (bp, configurator) => {
-    
     checkVersion(bp, __dirname)
 
     bp.middlewares.register({
@@ -97,6 +97,8 @@ module.exports = {
       pause: (platform, userId) => {
         return db.setSessionPaused(true, platform, userId, 'code')
         .then(sessionId => {
+          event.bp.logger.debug('[hitl] Session paused, message swallowed:', event.text)
+
           bp.events.emit('hitl.session', { id: sessionId })
           bp.events.emit('hitl.session.changed', { id: sessionId, paused: 1 })
         })
@@ -133,6 +135,7 @@ module.exports = {
         const event = {
           type: 'text',
           platform: session.platform,
+          user: {id: session.userId},
           raw: { to: session.userId, message: message },
           text: message
         }

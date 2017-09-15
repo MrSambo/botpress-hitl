@@ -64,6 +64,7 @@
     "bluebird": "^3.4.7",
     "botpress-version-manager": "^1.0.2",
     "lodash": "^4.17.4",
-    "moment": "^2.17.1"
+    "moment": "^2.17.1",
+    "winston": "^2.3.1"
   }
 }
