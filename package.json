@@ -22,8 +22,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node webpack.js --watch",
-    "compile": "node webpack.js --compile",
-    "postinstall": "npm install webpack && npm compile"
+    "build": "node webpack.js --compile",
+    "postinstall": "npm install webpack && npm build"
   },
   "repository": {
     "type": "git",
