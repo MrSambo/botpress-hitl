@@ -23,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node webpack.js --watch",
     "compile": "node webpack.js --compile",
-    "postinstall": "npm compile",
+    "postinstall": "npm compile"
   },
   "repository": {
     "type": "git",
